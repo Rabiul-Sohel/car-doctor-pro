@@ -16,7 +16,11 @@ const BookingUpdatePage = ({params}) => {
     
     useEffect(()=>{
         const loadingBooking = async()=>{
-            const res = await fetch(`http://localhost:3000/my-booking/api/booking/${params.id}`)
+            const res = await fetch(`http://localhost:3000/my-booking/api/booking/${params.id}`,{
+                headers: {
+                    'Access-Control-Allow-Origin': '*' 
+                }
+            })
             const data = await res.json()
             setBooking(data);
     
