@@ -19,7 +19,8 @@ const page = () => {
             method: "POST",
             body: JSON.stringify(newUser),
             headers: {
-                "content-type" : "application/json"
+                "content-type" : "application/json",
+               'Access-Control-Allow-Origin': '*' 
             }
         })
         if(res.status === 200){
