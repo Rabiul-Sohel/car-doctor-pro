@@ -39,7 +39,7 @@ const BookingUpdatePage = ({params}) => {
             address: event.target.address.value,
     
         }
-        const res = await fetch(`${prcess.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/booking/${params.id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/booking/${params.id}`,{
             method: "PATCH",
             body: JSON.stringify(updatedBooking),
             headers:{
