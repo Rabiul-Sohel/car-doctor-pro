@@ -7,13 +7,14 @@ import toast from 'react-hot-toast';
 const MyBookingPage = ({ params }) => {
     const [bookings, setBookings] = useState([])
    
+    const loadData = async () => {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/${params.email}`)
+        const loadedBookings = await res.json()
+        setBookings(loadedBookings);
+        // console.log(loadedBookings);
+    }
     useEffect(() => {
-        const loadData = async () => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/${params.email}`)
-            const loadedBookings = await res.json()
-            setBookings(loadedBookings);
-            // console.log(loadedBookings);
-        }
+       
         loadData()
         
     }, [params.email])
