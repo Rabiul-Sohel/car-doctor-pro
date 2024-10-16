@@ -16,7 +16,7 @@ const BookingUpdatePage = ({params}) => {
     
     useEffect(()=>{
         const loadingBooking = async()=>{
-            const res = await fetch(`http://localhost:3000/my-booking/api/booking/${params.id}`,{
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/booking/${params.id}`,{
                 headers: {
                     'Accept': 'application/json',
             'Content-Type': 'application/json',
