@@ -55,7 +55,7 @@ const LoginPage = () => {
                         <h4 className='text-xl mt-6 mb-3 '>Or Login with</h4>
                         <SocialLogin/>
                     </div>
-                    <h4 className='text-lg text-center  mt-3 '>Don't have an account? <Link href='/signup' className='text-primary font-bold'>Sign Up</Link></h4> 
+                    <h4 className='text-lg text-center  mt-3 '>{`Don't have an account?`} <Link href='/signup' className='text-primary font-bold'>Sign Up</Link></h4> 
                 </div>
 
             </div>

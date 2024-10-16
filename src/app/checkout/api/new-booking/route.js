@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import { NextResponse } from "next/server";
 
 export const POST = async(request, {params})=>{
     const booking = await request.json()
@@ -9,9 +10,9 @@ export const POST = async(request, {params})=>{
    
     try {
       const newBooking = await bookingCollection.insertOne(booking)
-        return Response.json({message: 'Booking posted successfully', newBooking})
+        return NextResponse.json({message: 'Booking posted successfully', newBooking})
     } catch (error) {
-      console.log(error);  
+      return NextResponse.json({message: 'No Data Found'})  
     }
 
 }

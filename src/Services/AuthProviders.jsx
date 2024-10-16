@@ -1,11 +1,14 @@
 "use client"
 import { SessionProvider } from 'next-auth/react';
-import React from 'react';
+import React, { Suspense } from 'react';
 
-const AuthProviders = ({children}) => {
+const AuthProviders = ({ children }) => {
     return (
         <SessionProvider>
-            {children}
+            <Suspense fallback={null}>
+                {children}
+            </Suspense>
+
         </SessionProvider>
     );
 };

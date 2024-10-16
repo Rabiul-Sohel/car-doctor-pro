@@ -12,16 +12,17 @@ const BookingUpdatePage = ({params}) => {
     // const {data} = useSession()
     const router = useRouter()
     const [booking, setBooking] = useState({}) 
-    const loadingBooking = async()=>{
-        const res = await fetch(`http://localhost:3000/my-booking/api/booking/${params.id}`)
-        const data = await res.json()
-        setBooking(data);
-
-    }
+   
     
     useEffect(()=>{
+        const loadingBooking = async()=>{
+            const res = await fetch(`http://localhost:3000/my-booking/api/booking/${params.id}`)
+            const data = await res.json()
+            setBooking(data);
+    
+        }
         loadingBooking()
-    },[params])
+    },[params.id])
     
     const handleUpdateBooking = async(event) =>{
         event.preventDefault()
@@ -32,7 +33,7 @@ const BookingUpdatePage = ({params}) => {
             address: event.target.address.value,
     
         }
-        const res = await fetch(`http://localhost:3000/my-booking/api/booking/${params.id}`,{
+        const res = await fetch(`${prcess.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/booking/${params.id}`,{
             method: "PATCH",
             body: JSON.stringify(updatedBooking),
             headers:{

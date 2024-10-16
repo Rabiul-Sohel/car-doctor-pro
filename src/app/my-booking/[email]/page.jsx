@@ -6,17 +6,19 @@ import toast from 'react-hot-toast';
 // import { useState } from 'react/cjs/react.production.min';
 const MyBookingPage = ({ params }) => {
     const [bookings, setBookings] = useState([])
-    const loadData = async () => {
-        const res = await fetch(`http://localhost:3000/my-booking/api/${params.email}`)
-        const loadedBookings = await res.json()
-        setBookings(loadedBookings);
-        // console.log(loadedBookings);
-    }
+   
     useEffect(() => {
+        const loadData = async () => {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/${params.email}`)
+            const loadedBookings = await res.json()
+            setBookings(loadedBookings);
+            // console.log(loadedBookings);
+        }
         loadData()
-    }, [params])
+        
+    }, [params.email])
     const handleBookingDelete = async (id) => {
-        const res = await fetch(`http://localhost:3000/my-booking/api/booking/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/my-booking/api/booking/${id}`, {
             method: "DELETE"
         })
         const data = await res.json()
